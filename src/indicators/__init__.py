@@ -81,6 +81,15 @@ from .statistics import (
     StatisticsResult
 )
 
+from .patterns import (
+    compute_patterns,
+    get_patterns_dict,
+    interpret_patterns,
+    get_strongest_pattern,
+    PatternResult,
+    REVERSAL_PATTERNS
+)
+
 import numpy as np
 from typing import Dict, Any
 
@@ -128,6 +137,7 @@ def compute_all_indicators(
     cycles_result = compute_cycles(open_, high, low, close, volume)
     price_transform_result = compute_price_transform(open_, high, low, close, volume)
     statistics_result = compute_statistics(open_, high, low, close, volume)
+    patterns_result = compute_patterns(open_, high, low, close, volume)
     
     return {
         "overlap": get_overlap_studies_dict(overlap_result),
@@ -137,7 +147,8 @@ def compute_all_indicators(
         "cycles": get_cycles_dict(cycles_result),
         "price_transform": get_price_transform_dict(price_transform_result),
         "statistics": get_statistics_dict(statistics_result),
-        # TODO: Add patterns, math_transform, math_operators
+        "patterns": get_patterns_dict(patterns_result),
+        # TODO: Add math_transform, math_operators
     }
 
 
@@ -208,4 +219,12 @@ __all__ = [
     "interpret_statistics",
     "calculate_regression_channel",
     "StatisticsResult",
+    
+    # Patterns
+    "compute_patterns",
+    "get_patterns_dict",
+    "interpret_patterns",
+    "get_strongest_pattern",
+    "PatternResult",
+    "REVERSAL_PATTERNS",
 ]
