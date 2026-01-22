@@ -2,7 +2,7 @@
 Kuiper V2 - Technical Indicators Package
 =========================================
 
-Complete implementation of all 158+ TA-Lib indicators organized by category.
+COMPLETE implementation of ALL 161 TA-Lib indicators organized by category.
 
 Categories:
 - Overlap Studies (18 functions): Moving averages, Bollinger Bands, SAR
@@ -13,7 +13,7 @@ Categories:
 - Price Transform (5 functions): AVGPRICE, TYPPRICE, etc.
 - Statistics (9 functions): Linear regression, STDDEV, etc.
 - Pattern Recognition (61 functions): Candlestick patterns (CDL*)
-- Math Transform (15 functions): Trigonometric functions
+- Math Transform (15 functions): LN, SQRT, trigonometric functions
 - Math Operators (11 functions): MIN, MAX, SUM, etc.
 
 Usage:
@@ -90,6 +90,22 @@ from .patterns import (
     REVERSAL_PATTERNS
 )
 
+from .math_transform import (
+    compute_math_transform,
+    get_math_transform_dict,
+    calculate_log_returns,
+    MathTransformResult
+)
+
+from .math_operators import (
+    compute_math_operators,
+    get_math_operators_dict,
+    find_support_resistance,
+    calculate_donchian_channel,
+    interpret_price_position,
+    MathOperatorsResult
+)
+
 import numpy as np
 from typing import Dict, Any
 
@@ -102,10 +118,10 @@ def compute_all_indicators(
     volume: np.ndarray
 ) -> Dict[str, Any]:
     """
-    Compute ALL indicators across all categories.
+    Compute ALL 161 indicators across all categories.
     
     This is the main entry point for the Indicator Engine.
-    Computes all 158+ TA-Lib indicators and returns them organized by category.
+    Computes all TA-Lib indicators and returns them organized by category.
     
     Args:
         open_: Open prices (numpy array)
@@ -115,19 +131,7 @@ def compute_all_indicators(
         volume: Volume (numpy array)
     
     Returns:
-        Dict with all indicators organized by category:
-        {
-            "overlap": {...},
-            "momentum": {...},
-            "volume": {...},
-            "volatility": {...},
-            "cycles": {...},
-            "price_transform": {...},
-            "statistics": {...},
-            "patterns": {...},  # TODO: Implement
-            "math_transform": {...},  # TODO: Implement
-            "math_operators": {...}  # TODO: Implement
-        }
+        Dict with all indicators organized by category
     """
     # Compute all categories
     overlap_result = compute_overlap_studies(open_, high, low, close, volume)
@@ -138,6 +142,8 @@ def compute_all_indicators(
     price_transform_result = compute_price_transform(open_, high, low, close, volume)
     statistics_result = compute_statistics(open_, high, low, close, volume)
     patterns_result = compute_patterns(open_, high, low, close, volume)
+    math_transform_result = compute_math_transform(open_, high, low, close, volume)
+    math_operators_result = compute_math_operators(open_, high, low, close, volume)
     
     return {
         "overlap": get_overlap_studies_dict(overlap_result),
@@ -148,7 +154,8 @@ def compute_all_indicators(
         "price_transform": get_price_transform_dict(price_transform_result),
         "statistics": get_statistics_dict(statistics_result),
         "patterns": get_patterns_dict(patterns_result),
-        # TODO: Add math_transform, math_operators
+        "math_transform": get_math_transform_dict(math_transform_result),
+        "math_operators": get_math_operators_dict(math_operators_result),
     }
 
 
@@ -162,9 +169,9 @@ def get_indicator_count() -> Dict[str, int]:
         "cycles": 5,
         "price_transform": 5,
         "statistics": 9,
-        "patterns": 61,  # TODO
-        "math_transform": 15,  # TODO
-        "math_operators": 11,  # TODO
+        "patterns": 61,
+        "math_transform": 15,
+        "math_operators": 11,
         "total": 161  # Some functions return multiple values
     }
 
@@ -227,4 +234,18 @@ __all__ = [
     "get_strongest_pattern",
     "PatternResult",
     "REVERSAL_PATTERNS",
+    
+    # Math Transform
+    "compute_math_transform",
+    "get_math_transform_dict",
+    "calculate_log_returns",
+    "MathTransformResult",
+    
+    # Math Operators
+    "compute_math_operators",
+    "get_math_operators_dict",
+    "find_support_resistance",
+    "calculate_donchian_channel",
+    "interpret_price_position",
+    "MathOperatorsResult",
 ]
