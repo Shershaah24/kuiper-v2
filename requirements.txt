@@ -1,0 +1,14 @@
+# Core dependencies
+metaapi-cloud-sdk>=27.0.0
+TA-Lib>=0.4.28
+pandas>=2.0.0
+numpy>=1.24.0
+
+# AWS
+boto3>=1.28.0
+
+# Async support
+aiohttp>=3.8.0
+
+# Type hints
+typing-extensions>=4.5.0
