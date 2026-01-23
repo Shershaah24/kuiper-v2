@@ -1595,15 +1595,16 @@ def interpret_patterns(indicators: Dict[str, Any]) -> Dict[str, Any]:
 # =============================================================================
 
 def get_allowed_directions(regime: MarketRegime) -> List[TradeDirection]:
-    """Get allowed trade directions based on regime - EXACT GITHUB LOGIC."""
-    if regime == MarketRegime.TRENDING_UP:
-        return [TradeDirection.LONG]
-    elif regime == MarketRegime.TRENDING_DOWN:
-        return [TradeDirection.SHORT]
-    elif regime == MarketRegime.RANGING:
-        return [TradeDirection.LONG, TradeDirection.SHORT]
-    else:  # VOLATILE
+    """
+    Get allowed trade directions - PURE INDICATOR VOTING.
+    All directions allowed regardless of regime - let the 158 indicators decide!
+    Regime is informational only, not a filter.
+    """
+    # VOLATILE still stays out - too risky
+    if regime == MarketRegime.VOLATILE:
         return [TradeDirection.NO_TRADE]
+    # All other regimes: let indicators vote for direction
+    return [TradeDirection.LONG, TradeDirection.SHORT]
 
 
 def check_comprehensive_agreement(momentum_interp: Dict[str, Any],
@@ -2177,109 +2178,95 @@ def apply_hierarchy_comprehensive(regime: MarketRegime,
                                    allowed_directions: List[TradeDirection],
                                    indicators: Dict[str, Any]) -> Tuple[TradeDirection, List[str], List[str]]:
     """
-    Apply hierarchy when indicators conflict.
-    EXACT GITHUB IMPLEMENTATION.
-    Hierarchy: Regime > Trend > Momentum > Volume > Patterns
+    PURE INDICATOR VOTING - Let all 158 indicators decide direction.
+    No regime-based restrictions - majority vote wins!
+    
+    If total_bullish > total_bearish → LONG
+    If total_bearish > total_bullish → SHORT
+    If equal or too close → NO_TRADE
     """
     confidence_factors = []
     warning_factors = []
     momentum = indicators.get("momentum", {})
     
     summary = agreement["summary"]
+    total_bullish = summary["total_bullish"]
+    total_bearish = summary["total_bearish"]
+    bullish_pct = summary["bullish_pct"]
     
-    # Regime is king
-    if regime == MarketRegime.TRENDING_UP:
-        if TradeDirection.LONG in allowed_directions:
-            direction = TradeDirection.LONG
-            confidence_factors.append(f"Market regime is TRENDING_UP")
-            
-            if agreement["trend"]["direction"] == "BULLISH":
-                confidence_factors.append(f"Trend: {agreement['trend']['bullish']} bullish signals")
-            if agreement["momentum"]["direction"] == "BULLISH":
-                confidence_factors.append(f"Momentum: {agreement['momentum']['bullish']} bullish signals")
-            if agreement["volume"]["direction"] == "BULLISH":
-                confidence_factors.append("Volume confirms buying pressure")
-            if agreement["patterns"]["direction"] == "BULLISH":
-                confidence_factors.append("Bullish candlestick patterns present")
-            
-            if agreement["momentum"]["direction"] == "BEARISH":
-                warning_factors.append(f"Momentum diverging ({agreement['momentum']['bearish']} bearish)")
-            if volume_interp["trend"] not in ["ACCUMULATION"]:
-                warning_factors.append("Volume not confirming - potential weakness")
-            if agreement["patterns"]["direction"] == "BEARISH":
-                warning_factors.append("Bearish patterns - possible pullback")
-        else:
-            direction = TradeDirection.NO_TRADE
+    # VOLATILE regime - stay out
+    if regime == MarketRegime.VOLATILE:
+        return TradeDirection.NO_TRADE, ["Volatile conditions"], ["High volatility - staying out"]
     
-    elif regime == MarketRegime.TRENDING_DOWN:
-        if TradeDirection.SHORT in allowed_directions:
-            direction = TradeDirection.SHORT
-            confidence_factors.append(f"Market regime is TRENDING_DOWN")
-            
-            if agreement["trend"]["direction"] == "BEARISH":
-                confidence_factors.append(f"Trend: {agreement['trend']['bearish']} bearish signals")
-            if agreement["momentum"]["direction"] == "BEARISH":
-                confidence_factors.append(f"Momentum: {agreement['momentum']['bearish']} bearish signals")
-            if agreement["volume"]["direction"] == "BEARISH":
-                confidence_factors.append("Volume confirms selling pressure")
-            if agreement["patterns"]["direction"] == "BEARISH":
-                confidence_factors.append("Bearish candlestick patterns present")
-            
-            if agreement["momentum"]["direction"] == "BULLISH":
-                warning_factors.append(f"Momentum diverging ({agreement['momentum']['bullish']} bullish)")
-            if volume_interp["trend"] not in ["DISTRIBUTION"]:
-                warning_factors.append("Volume not confirming - potential weakness")
-            if agreement["patterns"]["direction"] == "BULLISH":
-                warning_factors.append("Bullish patterns - possible bounce")
-        else:
-            direction = TradeDirection.NO_TRADE
+    # PURE INDICATOR VOTING - majority wins
+    # Need at least 55% agreement to take a trade
+    MIN_AGREEMENT_PCT = 55
     
-    elif regime == MarketRegime.RANGING:
-        # In ranging, use momentum extremes
-        rsi = momentum.get("RSI_14", 50)
-        stoch_k = momentum.get("STOCH_K", 50)
-        cci = momentum.get("CCI_14", 0)
-        willr = momentum.get("WILLR_14", -50)
-        ultosc = momentum.get("ULTOSC", 50)
+    if bullish_pct >= MIN_AGREEMENT_PCT:
+        # MAJORITY BULLISH → LONG
+        direction = TradeDirection.LONG
+        confidence_factors.append(f"INDICATOR VOTE: {total_bullish} bullish vs {total_bearish} bearish ({bullish_pct:.1f}%)")
         
-        oversold_count = sum([
-            rsi < 30,
-            stoch_k < 20,
-            cci < -100,
-            willr < -80,
-            ultosc < 30
-        ])
-        overbought_count = sum([
-            rsi > 70,
-            stoch_k > 80,
-            cci > 100,
-            willr > -20,
-            ultosc > 70
-        ])
+        # Add supporting factors
+        if agreement["trend"]["direction"] == "BULLISH":
+            confidence_factors.append(f"Trend confirms: {agreement['trend']['bullish']} bullish signals")
+        if agreement["momentum"]["direction"] == "BULLISH":
+            confidence_factors.append(f"Momentum confirms: {agreement['momentum']['bullish']} bullish signals")
+        if agreement["volume"]["direction"] == "BULLISH":
+            confidence_factors.append("Volume confirms buying pressure")
+        if agreement["patterns"]["direction"] == "BULLISH":
+            confidence_factors.append(f"Patterns confirm: {agreement['patterns']['bullish']} bullish patterns")
+        if agreement["cycles"]["direction"] == "BULLISH":
+            confidence_factors.append("Cycle analysis bullish")
+        if agreement["statistics"]["direction"] == "BULLISH":
+            confidence_factors.append("Statistical indicators bullish")
         
-        if oversold_count >= 3:
-            if TradeDirection.LONG in allowed_directions:
-                direction = TradeDirection.LONG
-                confidence_factors.append(f"OVERSOLD: {oversold_count} indicators at extremes")
-                if agreement["patterns"]["direction"] == "BULLISH":
-                    confidence_factors.append("Bullish reversal pattern at support")
-            else:
-                direction = TradeDirection.NO_TRADE
-        elif overbought_count >= 3:
-            if TradeDirection.SHORT in allowed_directions:
-                direction = TradeDirection.SHORT
-                confidence_factors.append(f"OVERBOUGHT: {overbought_count} indicators at extremes")
-                if agreement["patterns"]["direction"] == "BEARISH":
-                    confidence_factors.append("Bearish reversal pattern at resistance")
-            else:
-                direction = TradeDirection.NO_TRADE
-        else:
-            direction = TradeDirection.NO_TRADE
-            warning_factors.append("Mid-range - wait for extremes")
-    
-    else:  # VOLATILE
+        # Add warnings for dissenting indicators
+        if agreement["trend"]["direction"] == "BEARISH":
+            warning_factors.append(f"Trend diverging: {agreement['trend']['bearish']} bearish")
+        if agreement["momentum"]["direction"] == "BEARISH":
+            warning_factors.append(f"Momentum diverging: {agreement['momentum']['bearish']} bearish")
+        if agreement["patterns"]["direction"] == "BEARISH":
+            warning_factors.append(f"Bearish patterns present: {agreement['patterns']['bearish']}")
+        
+        # Regime info (informational only)
+        confidence_factors.append(f"Regime context: {regime.value}")
+        
+    elif (100 - bullish_pct) >= MIN_AGREEMENT_PCT:
+        # MAJORITY BEARISH → SHORT
+        direction = TradeDirection.SHORT
+        confidence_factors.append(f"INDICATOR VOTE: {total_bearish} bearish vs {total_bullish} bullish ({100-bullish_pct:.1f}%)")
+        
+        # Add supporting factors
+        if agreement["trend"]["direction"] == "BEARISH":
+            confidence_factors.append(f"Trend confirms: {agreement['trend']['bearish']} bearish signals")
+        if agreement["momentum"]["direction"] == "BEARISH":
+            confidence_factors.append(f"Momentum confirms: {agreement['momentum']['bearish']} bearish signals")
+        if agreement["volume"]["direction"] == "BEARISH":
+            confidence_factors.append("Volume confirms selling pressure")
+        if agreement["patterns"]["direction"] == "BEARISH":
+            confidence_factors.append(f"Patterns confirm: {agreement['patterns']['bearish']} bearish patterns")
+        if agreement["cycles"]["direction"] == "BEARISH":
+            confidence_factors.append("Cycle analysis bearish")
+        if agreement["statistics"]["direction"] == "BEARISH":
+            confidence_factors.append("Statistical indicators bearish")
+        
+        # Add warnings for dissenting indicators
+        if agreement["trend"]["direction"] == "BULLISH":
+            warning_factors.append(f"Trend diverging: {agreement['trend']['bullish']} bullish")
+        if agreement["momentum"]["direction"] == "BULLISH":
+            warning_factors.append(f"Momentum diverging: {agreement['momentum']['bullish']} bullish")
+        if agreement["patterns"]["direction"] == "BULLISH":
+            warning_factors.append(f"Bullish patterns present: {agreement['patterns']['bullish']}")
+        
+        # Regime info (informational only)
+        confidence_factors.append(f"Regime context: {regime.value}")
+        
+    else:
+        # NO CLEAR MAJORITY - indicators are split
         direction = TradeDirection.NO_TRADE
-        warning_factors.append("Volatile conditions - staying out")
+        warning_factors.append(f"No clear majority: {total_bullish} bullish vs {total_bearish} bearish ({bullish_pct:.1f}%)")
+        warning_factors.append(f"Need {MIN_AGREEMENT_PCT}% agreement to trade")
     
     return direction, confidence_factors, warning_factors
 
@@ -2287,29 +2274,34 @@ def apply_hierarchy_comprehensive(regime: MarketRegime,
 def calculate_position_multiplier_comprehensive(agreement: Dict[str, Any],
                                                  regime: MarketRegime,
                                                  warning_factors: List[str]) -> float:
-    """Calculate position size multiplier based on comprehensive agreement. EXACT GITHUB."""
+    """
+    Calculate position size multiplier based on indicator agreement strength.
+    PURE INDICATOR VOTING - position size based on how strong the majority is.
+    """
     if regime == MarketRegime.VOLATILE:
         return 0.0
     
     summary = agreement["summary"]
     bullish_pct = summary["bullish_pct"]
     
-    if regime == MarketRegime.TRENDING_UP:
-        agreement_pct = bullish_pct
-    elif regime == MarketRegime.TRENDING_DOWN:
-        agreement_pct = 100 - bullish_pct
-    else:
-        return 0.5  # Ranging - always reduced size
+    # Use the stronger side's percentage
+    agreement_pct = max(bullish_pct, 100 - bullish_pct)
     
+    # Position size based on agreement strength
     if agreement_pct >= 75:
-        multiplier = 1.0
+        multiplier = 1.0  # Strong agreement - full size
+    elif agreement_pct >= 70:
+        multiplier = 0.85
     elif agreement_pct >= 65:
-        multiplier = 0.75
+        multiplier = 0.70
+    elif agreement_pct >= 60:
+        multiplier = 0.55
     elif agreement_pct >= 55:
-        multiplier = 0.5
+        multiplier = 0.40  # Minimum agreement threshold
     else:
-        multiplier = 0.25
+        multiplier = 0.0  # Below threshold - no trade
     
+    # Reduce for warnings
     if len(warning_factors) >= 3:
         multiplier *= 0.5
     elif len(warning_factors) >= 2:
