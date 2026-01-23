@@ -1,0 +1,118 @@
+{
+  "timestamp": "2026-01-23T04:28:14.045636+00:00",
+  "best_trade": {
+    "symbol": "EURJPY",
+    "score": 110.0,
+    "analysis": {
+      "symbol": "EURJPY",
+      "timeframe": "H1",
+      "timestamp": "2026-01-23T04:28:20.071657+00:00",
+      "regime": "TRENDING_UP",
+      "regime_reasoning": "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nMARKET REGIME: TRENDING_UP\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nTREND STRENGTH ANALYSIS:\n  \u2022 ADX=38.3, ADXR=35.2 \u2192 STRONG TREND\n  \u2022 +DI=27.1 > -DI=11.0 \u2192 BULLISH direction\n\nTREND DIRECTION ANALYSIS:\n  \u2022 AROON Up=93, Down=7 \u2192 STRONG UPTREND\n  \u2022 Hilbert Transform: TRENDING mode\n  \u2022 LINEARREG angle=2.2\u00b0 \u2192 SIDEWAYS\n\nMOVING AVERAGE ANALYSIS:\n  \u2022 MAs STRONGLY BULLISH (11/11 aligned up)\n\nVOLATILITY ANALYSIS:\n  \u2022 Low volatility (squeeze): NATR=0.098%, BB width=0.55%\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nCONCLUSION: Market in UPTREND. Look for LONG opportunities only.",
+      "decision": "LONG",
+      "decision_reasoning": "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nTRADE DECISION: LONG\nPosition Size: 100%\nOverall Agreement: 25 bullish / 1 bearish (96.2% bullish)\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nMARKET REGIME: TRENDING_UP\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nTREND STRENGTH ANALYSIS:\n  \u2022 ADX=38.3, ADXR=35.2 \u2192 STRONG TREND\n  \u2022 +DI=27.1 > -DI=11.0 \u2192 BULLISH direction\n\nTREND DIRECTION ANALYSIS:\n  \u2022 AROON Up=93, Down=7 \u2192 STRONG UPTREND\n  \u2022 Hilbert Transform: TRENDING mode\n  \u2022 LINEARREG angle=2.2\u00b0 \u2192 SIDEWAYS\n\nMOVING AVERAGE ANALYSIS:\n  \u2022 MAs STRONGLY BULLISH (11/11 aligned up)\n\nVOLATILITY ANALYSIS:\n  \u2022 Low volatility (squeeze): NATR=0.098%, BB width=0.55%\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nCONCLUSION: Market in UPTREND. Look for LONG opportunities only.\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nINDICATOR ANALYSIS (ALL 161 INDICATORS)\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nTREND ANALYSIS (10 bullish / 2 bearish signals):\n  Direction: UP | Strength: MODERATE (ADX=38.3)\n  EMA Crossover: BULLISH | MAMA/FAMA: BULLISH\n  SAR: BEARISH (SAR above price)\n  LINEARREG: Angle=2.2\u00b0, Slope=0.038736\n  \u2192 UPTREND CONFIRMED by 10 indicators\n\nMOMENTUM ANALYSIS (19 bullish / 0 bearish):\n  Overall: BULLISH\n  RSI=72.2: Strong momentum, trend continuation likely\n  MACD: BULLISH (hist=0.004302)\n  Stochastic: BULLISH (K=54.9, D=66.8)\n  AROON: Up=93, Down=7, OSC=86\n  CCI=76.7, CMO=44.3, MOM=0.3510\n  APO=0.2870, PPO=0.15%, BOP=0.44\n  ROC=0.19%, TRIX=0.0121\n  ULTOSC=64.0, WILLR=-17.6, MFI=54.9\n  \u26a0\ufe0f OVERBOUGHT: 3 indicators at extremes\n\nVOLUME ANALYSIS:\n  OBV trend: RISING (ADOSC=3112.50)\n  A/D: ACCUMULATION (AD=101120.48)\n  MFI: BULLISH (54.9)\n  \u2192 VOLUME CONFIRMS price action\n\nPATTERN ANALYSIS:\n  Bullish patterns: ['CDLSHORTLINE']\n  Bearish patterns: None\n  Bias: BULLISH\n  \u2192 Bullish patterns CONFIRM uptrend - good entry\n\nCYCLE ANALYSIS (Hilbert Transform):\n  Dominant Period: 34.9 bars\n  Phase: 185.7\u00b0\n  Mode: TRENDING\n  \u2192 In TREND mode - follow trend, ignore cycle signals\n  Phasor angle: -30.8\u00b0\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nAGREEMENT BREAKDOWN\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n  Trend: 5 bullish / 1 bearish \u2192 BULLISH\n  Momentum: 18 bullish / 0 bearish \u2192 BULLISH\n  Volume: BULLISH\n  Patterns: BULLISH\n  Cycles: BULLISH\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nCONFIDENCE FACTORS\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n  \u2713 Market regime is TRENDING_UP\n  \u2713 Trend: 5 bullish signals\n  \u2713 Momentum: 18 bullish signals\n  \u2713 Volume confirms buying pressure\n  \u2713 Bullish candlestick patterns present\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nCONCLUSION\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nThe market is in an UPTREND with supporting indicators. 25 indicators agree. Enter LONG position with appropriate risk management.",
+      "confidence_factors": [
+        "Market regime is TRENDING_UP",
+        "Trend: 5 bullish signals",
+        "Momentum: 18 bullish signals",
+        "Volume confirms buying pressure",
+        "Bullish candlestick patterns present"
+      ],
+      "warning_factors": [],
+      "position_size_multiplier": 1.0,
+      "entry_price": 186.324,
+      "stop_loss": 186.166,
+      "take_profit": 186.78213,
+      "risk_reward_ratio": 2.9,
+      "interpretations": {
+        "trend": "TREND ANALYSIS (10 bullish / 2 bearish signals):\n  Direction: UP | Strength: MODERATE (ADX=38.3)\n  EMA Crossover: BULLISH | MAMA/FAMA: BULLISH\n  SAR: BEARISH (SAR above price)\n  LINEARREG: Angle=2.2\u00b0, Slope=0.038736\n  \u2192 UPTREND CONFIRMED by 10 indicators",
+        "momentum": "MOMENTUM ANALYSIS (19 bullish / 0 bearish):\n  Overall: BULLISH\n  RSI=72.2: Strong momentum, trend continuation likely\n  MACD: BULLISH (hist=0.004302)\n  Stochastic: BULLISH (K=54.9, D=66.8)\n  AROON: Up=93, Down=7, OSC=86\n  CCI=76.7, CMO=44.3, MOM=0.3510\n  APO=0.2870, PPO=0.15%, BOP=0.44\n  ROC=0.19%, TRIX=0.0121\n  ULTOSC=64.0, WILLR=-17.6, MFI=54.9\n  \u26a0\ufe0f OVERBOUGHT: 3 indicators at extremes",
+        "volume": "VOLUME ANALYSIS:\n  OBV trend: RISING (ADOSC=3112.50)\n  A/D: ACCUMULATION (AD=101120.48)\n  MFI: BULLISH (54.9)\n  \u2192 VOLUME CONFIRMS price action",
+        "patterns": "PATTERN ANALYSIS:\n  Bullish patterns: ['CDLSHORTLINE']\n  Bearish patterns: None\n  Bias: BULLISH\n  \u2192 Bullish patterns CONFIRM uptrend - good entry",
+        "cycles": "CYCLE ANALYSIS (Hilbert Transform):\n  Dominant Period: 34.9 bars\n  Phase: 185.7\u00b0\n  Mode: TRENDING\n  \u2192 In TREND mode - follow trend, ignore cycle signals\n  Phasor angle: -30.8\u00b0"
+      }
+    },
+    "trade_result": {
+      "success": true,
+      "order_id": "DRY_RUN_1769142500",
+      "direction": "LONG",
+      "entry_price": 186.324,
+      "stop_loss": 186.166,
+      "take_profit": 186.78213,
+      "lot_size": 0.01,
+      "error": null
+    }
+  },
+  "all_rankings": [
+    {
+      "rank": 1,
+      "symbol": "EURJPY",
+      "score": 110.0,
+      "regime": "TRENDING_UP",
+      "decision": "LONG"
+    },
+    {
+      "rank": 2,
+      "symbol": "USDJPY",
+      "score": 105.0,
+      "regime": "TRENDING_UP",
+      "decision": "LONG"
+    },
+    {
+      "rank": 3,
+      "symbol": "NZDUSD",
+      "score": 98.75,
+      "regime": "TRENDING_UP",
+      "decision": "LONG"
+    },
+    {
+      "rank": 4,
+      "symbol": "USDCAD",
+      "score": 87.5,
+      "regime": "TRENDING_DOWN",
+      "decision": "SHORT"
+    },
+    {
+      "rank": 5,
+      "symbol": "EURUSD",
+      "score": 83.75,
+      "regime": "TRENDING_UP",
+      "decision": "LONG"
+    },
+    {
+      "rank": 6,
+      "symbol": "AUDUSD",
+      "score": 83.75,
+      "regime": "TRENDING_UP",
+      "decision": "LONG"
+    },
+    {
+      "rank": 7,
+      "symbol": "USDCHF",
+      "score": 59.375,
+      "regime": "TRENDING_DOWN",
+      "decision": "SHORT"
+    },
+    {
+      "rank": 8,
+      "symbol": "GBPJPY",
+      "score": -1,
+      "regime": "N/A",
+      "decision": "N/A"
+    },
+    {
+      "rank": 9,
+      "symbol": "EURGBP",
+      "score": -1,
+      "regime": "N/A",
+      "decision": "N/A"
+    },
+    {
+      "rank": 10,
+      "symbol": "GBPUSD",
+      "score": -1,
+      "regime": "N/A",
+      "decision": "N/A"
+    }
+  ]
+}
